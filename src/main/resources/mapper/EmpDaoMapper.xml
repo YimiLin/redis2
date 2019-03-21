@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.dao.EmployeeDao">
+    <select id="getByIdemp" resultType="employee">
+           <![CDATA[
+        
+                   select * from employee where eid=#{eid}
+
+        ]]>
+       </select>
+
+    <update id="updempbyid">
+        <![CDATA[
+        
+                update employee set ename=#{ename},phone=#{phone},face=#{face},did=#{did} where eid=#{eid}
+
+        ]]>
+    </update>
+
+    <insert id="addemp">
+        <selectKey keyProperty="eid" resultType="int" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+        <![CDATA[
+          insert into employee values(null,#{ename},#{phone},#{did},#{face})
+        ]]>
+    </insert>
+
+    <delete id="delemp">
+        <![CDATA[
+        
+                delete from employee where eid=#{eid}
+
+        ]]>
+    </delete>
+</mapper>

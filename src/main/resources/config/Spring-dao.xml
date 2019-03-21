@@ -12,7 +12,7 @@
     <!--1、引入jdbc参数文件-->
     <context:property-placeholder location="classpath:properties/jdbc.properties" ignore-unresolvable="true"/>
     <!--2、配置spring运行要扫描的包,配合自动注入这个注解，完成spring的装载功能-->
-    <context:component-scan base-package="com.gs.*"/>
+    <context:component-scan base-package="com.gs.service.*"/>
     <!--3、配置数据源 -->
     <bean name="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
@@ -43,7 +43,7 @@
         <!--2、配置别名-->
         <property name="typeAliasesPackage" value="com.gs.bean"/>
         <!--3、加载映射文件-->
-        <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
         <!--导入mybatis中setting设置-->
         <!--<property name="configLocation" value="classpath:config/Mybatis-config.xml"></property>-->
     </bean>
